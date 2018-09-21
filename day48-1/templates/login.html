@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+{#   <meta name="csrf_token" value="{{ csrf_token()}}"  id="csrf">#}
+</head>
+<body>
+<form >
+    用户名: <input type="text"  name="username"  id="name">
+    密码:<input type="text"  name="password"  id="word">
+    <input type="submit"  id="btn">
+</form>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('#btn').click(function (ev) {
+            ev.preventDefault()
+           var  username=$('#name').val()
+            var  password = $('#word').val()
+            {#var csrf=$('#csrf').attr('value')#}
+            $.ajax(
+                {
+                    url:'/login/',
+                    type:'post',
+                    data:{
+                        'username':username,
+                        'password':password ,
+                        {#"csrf_token":csrf#}
+                    },
+                    success:function (data) {
+                        window.location = /cc/
+                    }
+
+
+                }
+
+            )
+        })
+    })
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容</title>
+{#    <meta name="csrf_token" value="{{ csrf_token()}}"  id="csrf">#}
+</head>
+<body>
+<form >
+    帐户: <input type="text"  name="username"  id="name">
+    金额:<input type="text"  name="password"  id="word">
+    <input type="submit"  id="btn">
+</form>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('#btn').click(function (ev) {
+            ev.preventDefault()
+            username=$('#name').val()
+            password=$('#word').val()
+            {#csrf=$('#csrf').attr('value')#}
+            $.ajax({
+                url:'/con/',
+                type:'post',
+                data:{
+                     'username':username,
+                        'password':password ,
+                        {#"csrf_token":csrf#}
+
+                },
+                success: function (data) {
+                    alert(data)
+                },
+
+                error: function (err) {
+                    alert(err)
+                }
+
+
+            })
+        })
+    })
+
+</script>
+
+</html>
